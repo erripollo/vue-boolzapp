@@ -1,0 +1,94 @@
+.wrapper {
+  background: linear-gradient(to bottom, #009688 100px, #dbdbd3 100px);
+  padding: 20px 0;
+}
+
+/****************************
+* side menu section 
+*****************************/
+aside {
+  width: 400px;
+  height: 100%;
+  background-color: white;
+}
+
+/* user section */
+.user {
+  height: 80px;
+  background-color: #eaeaea;
+}
+
+.user_icons,
+.icons_active_contact {
+  font-size: 1.7rem;
+  color: #b1b1b1;
+}
+.user_icons i,
+.icons_active_contact i {
+  margin-right: 1rem;
+}
+
+/* notification setup */
+.notification {
+  height: 100px;
+  background-color: #8edafc;
+}
+.notification i {
+  font-size: 1.5rem;
+  color: #8edafc;
+}
+
+.bell {
+  background-color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+/* search section */
+.search {
+  height: 50px;
+  background-color: #fafafa;
+}
+.search .input-group-text {
+  background-color: white;
+  border-right: none;
+}
+.search input {
+  border-left: none;
+}
+
+/* contacts chat list */
+.contact {
+  height: 100px;
+}
+
+/****************************
+* active chat
+*****************************/
+.chat {
+  width: calc(100% - 400px);
+}
+
+/* active contact */
+.active_contact {
+  height: 80px;
+  background-color: #eaeaea;
+  border-left: 1px solid #d6d6d6;
+}
+
+.chat_contact {
+  height: calc(100% - 160px);
+  background-image: url("../img/mine.jpg");
+}
+
+/* type and send new message */
+.new_message {
+  height: 80px;
+  background-color: #f3eeea;
+}
+.new_message i {
+  font-size: 1.7rem;
+  color: #6b7376;
+  margin: 0 1.5rem;
+}

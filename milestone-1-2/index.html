@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    
+
+    <div id="app">
+        <div class="wrapper w-100 vh-100">
+            <div class="container bg-secondary w-100 h-100 px-0 d-flex">
+
+                <!-- side section -->
+                <aside>
+                    <!-- user section -->
+                    <div class="user w-100 d-flex align-items-center justify-content-between">
+                        <!-- profile img and user name -->
+                        <div class="user_profile">
+                            <img width="60px" class="rounded-circle mx-3" src="./assets/img/avatar_io.jpg" alt="">
+                            <span class="font-weight-bold">Nome Utente</span>
+                        </div>
+
+                        <!-- icons user section -->
+                        <div class="user_icons">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- notification setup -->
+                    <div class="notification w-100 d-flex align-items-center">
+                        <div class="bell d-flex align-items-center justify-content-center mx-4">
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span>Ricevi notifiche di nuovi messaggi</span>
+                            <a href="#">Attiva le notifiche desktop</a>
+                        </div>
+
+                    </div>
+
+                    <!-- search section -->
+                    <div class="search w-100 d-flex align-items-center px-2">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">
+                                <i class="fas fa-search"></i>
+                              </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Crea o inizia una nuova chat" aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                    </div>
+
+                    <!-- contacts chat list -->
+                    <div class="contacts_chat w-100 bg-white">
+                        <div class="contact w-100 d-flex align-items-center pl-4" v-for="(contact, index) in contacts" @click="showChatContact(index)">
+                            <img class="rounded-circle" width="70px" :src="profileImg + contact.avatar + '.jpg'" alt="">
+                            <div class="h-100 p-3">
+                                <span>{{contact.name}}</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </aside>
+                <!-- /side section -->
+
+                <!-- active chat -->
+                <div class="chat">
+                    <!-- active contact -->
+                    <div class="active_contact d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="h-100 d-flex align-items-center pl-3" v-for="select in contactSelect">
+                                <img class="rounded-circle" width="60px" :src="profileImg + select.avatar + '.jpg'" alt="">
+                                <div class="h-100 p-3">
+                                    <span>{{select.name}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icons_active_contact">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- chat contact -->
+                    <div class="chat_contact">
+
+                    </div>
+                    <!-- type and send new mesage -->
+                    <div class="new_message d-flex align-items-center">
+                        <i class="far fa-smile"></i>
+                        <div class="input-group input-group-lg">
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Scrivi un messaggio">
+                          </div>
+                          <i class="fas fa-microphone"></i>
+                    </div>
+    
+                </div>
+                <!-- /active chat -->
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- main.js -->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
