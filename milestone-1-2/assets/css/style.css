@@ -64,22 +64,53 @@ aside {
 }
 
 /****************************
-* active chat
+* chat active
 *****************************/
 .chat {
   width: calc(100% - 400px);
 }
 
-/* active contact */
+/* contact active */
 .active_contact {
   height: 80px;
   background-color: #eaeaea;
   border-left: 1px solid #d6d6d6;
 }
 
+.last_access {
+  font-size: 0.8rem;
+  color: #6b7389;
+}
+
+/* chat contact active */
 .chat_contact {
   height: calc(100% - 160px);
   background-image: url("../img/mine.jpg");
+}
+
+.sent_message {
+  align-items: flex-end;
+}
+
+.box_message {
+  width: fit-content;
+  border-radius: 10px;
+}
+.sent_message .box_message {
+  background-color: #d5f9ba;
+}
+
+.received_message .box_message {
+  background-color: white;
+}
+
+.date_message {
+  color: #b6b9bb;
+  font-size: 0.7rem;
+  text-align: right;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 100px;
 }
 
 /* type and send new message */

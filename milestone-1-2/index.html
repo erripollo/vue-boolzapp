@@ -67,7 +67,7 @@
 
                     <!-- contacts chat list -->
                     <div class="contacts_chat w-100 bg-white">
-                        <div class="contact w-100 d-flex align-items-center pl-4" v-for="(contact, index) in contacts" @click="showChatContact(index)">
+                        <div class="contact w-100 d-flex align-items-center pl-4" v-for="(contact, index) in contacts" @click="contactActive = contact">
                             <img class="rounded-circle" width="70px" :src="profileImg + contact.avatar + '.jpg'" alt="">
                             <div class="h-100 p-3">
                                 <span>{{contact.name}}</span>
@@ -79,18 +79,18 @@
                 </aside>
                 <!-- /side section -->
 
-                <!-- active chat -->
+                <!-- chat active -->
                 <div class="chat">
-                    <!-- active contact -->
+                    <!-- contact active -->
                     <div class="active_contact d-flex align-items-center justify-content-between">
-                        <div>
-                            <div class="h-100 d-flex align-items-center pl-3" v-for="select in contactSelect">
-                                <img class="rounded-circle" width="60px" :src="profileImg + select.avatar + '.jpg'" alt="">
-                                <div class="h-100 p-3">
-                                    <span>{{select.name}}</span>
-                                </div>
+                        <div class="h-100 d-flex align-items-center pl-3">
+                            <img v-if="contactActive.avatar" class="rounded-circle" width="60px" :src="profileImg + contactActive.avatar + '.jpg'" alt="">
+                            <div class="h-100 p-3 d-flex flex-column">
+                                <span>{{contactActive.name}}</span>
+                                <span class="last_access"></span>
                             </div>
                         </div>
+                        
                         <div class="icons_active_contact">
                             <i class="fas fa-search"></i>
                             <i class="fas fa-paperclip"></i>
@@ -99,8 +99,18 @@
 
                     </div>
 
-                    <!-- chat contact -->
-                    <div class="chat_contact">
+                    <!-- chat contact active -->
+                    <div class="chat_contact pt-5 px-5">
+                        <div class="row_message d-flex flex-column" :class="message.status==='sent' ? 'sent_message' : 'received_message'" v-for="message in contactActive.messages">
+                            <div class="box_message d-flex flex-column mb-3 mx-3">
+                                <span class="text_message pt-3 px-3">
+                                    {{message.text}}
+                                </span>
+                                <span class="date_message">
+                                    {{message.date}}
+                                </span>
+                            </div>
+                        </div>
 
                     </div>
                     <!-- type and send new mesage -->

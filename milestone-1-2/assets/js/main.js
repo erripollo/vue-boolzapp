@@ -4,6 +4,8 @@ const app = new Vue ({
     data: {
         profileImg: './assets/img/avatar',
 
+        contactActive: 0,
+
         contacts: [
             {
                 name: 'Michele',
@@ -90,15 +92,11 @@ const app = new Vue ({
             },
         ],
 
-        contactSelect: []
-
     },
 
     methods: {
 
-        showChatContact(index){
-            this.contactSelect = this.contacts.slice(index, ++index)
-        }
 
-    }
+    },
+
 })
