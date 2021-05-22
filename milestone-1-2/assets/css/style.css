@@ -63,6 +63,13 @@ aside {
   height: 100px;
 }
 
+.contacts_chat .last_message {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+}
+
 /****************************
 * chat active
 *****************************/
@@ -77,7 +84,8 @@ aside {
   border-left: 1px solid #d6d6d6;
 }
 
-.last_access {
+.last_access,
+.last_message {
   font-size: 0.8rem;
   color: #6b7389;
 }
