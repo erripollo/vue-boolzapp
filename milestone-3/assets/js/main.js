@@ -1,17 +1,10 @@
 const app = new Vue ({
-    
     el: '#app',
 
     data: {
         profileImg: './assets/img/avatar',
 
         contactActive: 0,
-
-        newMessage: {
-            date: '',
-            text: '',
-            status: ''
-        },
 
         contacts: [
             {
@@ -103,17 +96,8 @@ const app = new Vue ({
 
     methods: {
         
-        // sendNewMessage(){
-        //     this.contacts.forEach((contact)=>{
-        //         if(this.contactActive.name === contact.name) {
-        //             contact.messages.push(this.newMessage)
-        //             return
-        //         }
-        //     })
-        // }
-
-        sendNewMessage(){
-            this.contactActive.messages.push(this.newMessage)
+        selectContactActive(index){
+            return this.contactActive = index
         }
 
     },
