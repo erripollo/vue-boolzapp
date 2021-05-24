@@ -67,7 +67,7 @@
 
                     <!-- contacts chat list -->
                     <div class="contacts_chat w-100 bg-white">
-                        <div class="contact w-100 d-flex align-items-center pl-4" v-for="(contact, index) in contacts" @click="contactActive = contact">
+                        <div class="contact w-100 d-flex align-items-center pl-4" :class="index === contactActive ? 'active' : 'no_active' " v-for="(contact, index) in contacts" @click="selectContactActive(index)">
                             <img class="rounded-circle" width="70px" :src="profileImg + contact.avatar + '.jpg'" alt="">
                             <div class="h-100 p-3 d-flex flex-wrap justify-content-between">
                                 <span>{{contact.name}}</span>
@@ -86,10 +86,10 @@
                     <!-- contact active -->
                     <div class="active_contact d-flex align-items-center justify-content-between">
                         <div class="h-100 d-flex align-items-center pl-3">
-                            <img v-if="contactActive.avatar" class="rounded-circle" width="60px" :src="profileImg + contactActive.avatar + '.jpg'" alt="">
+                            <img class="rounded-circle" width="60px" :src="profileImg + contacts[contactActive].avatar + '.jpg'" alt="">
                             <div class="h-100 p-3 d-flex flex-column">
-                                <span>{{contactActive.name}}</span>
-                                <span class="last_access" v-for="(message, index) in contactActive.messages" v-if="index === contactActive.messages.length-1">Ultimo accesso {{message.date}}</span>
+                                <span>{{contacts[contactActive].name}}</span>
+                                <span class="last_access" v-for="(message, index) in contacts[contactActive].messages" v-if="index === contacts[contactActive].messages.length-1">Ultimo accesso {{message.date}}</span>
                             </div>
                         </div>
                         
@@ -103,7 +103,7 @@
 
                     <!-- chat contact active -->
                     <div class="chat_contact pt-5 px-5">
-                        <div class="row_message d-flex flex-column" :class="message.status==='sent' ? 'sent_message' : 'received_message'" v-for="message in contactActive.messages">
+                        <div class="row_message d-flex flex-column" :class="message.status==='sent' ? 'sent_message' : 'received_message'" v-for="message in contacts[contactActive].messages">
                             <div class="box_message d-flex flex-column mb-3 mx-3">
                                 <span class="text_message pt-3 px-3">
                                     {{message.text}}
