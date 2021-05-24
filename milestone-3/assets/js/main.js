@@ -6,6 +6,12 @@ const app = new Vue ({
 
         contactActive: 0,
 
+        newMessage: {
+            date: '',
+            text: '',
+            status: ''
+        },
+
         contacts: [
             {
                 name: 'Michele',
@@ -98,6 +104,10 @@ const app = new Vue ({
         
         selectContactActive(index){
             return this.contactActive = index
+        },
+
+        sendNewMessage(){
+            this.contacts[this.contactActive].messages.push(this.newMessage)
         }
 
     },
