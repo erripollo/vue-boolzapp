@@ -1,3 +1,4 @@
+
 const app = new Vue ({
     el: '#app',
 
@@ -6,11 +7,7 @@ const app = new Vue ({
 
         contactActive: 0,
 
-        newMessage: {
-            date: '',
-            text: '',
-            status: ''
-        },
+        newMessage: '',
 
         contacts: [
             {
@@ -107,9 +104,22 @@ const app = new Vue ({
         },
 
         sendNewMessage(){
-            this.contacts[this.contactActive].messages.push(this.newMessage)
-        }
+            this.contacts[this.contactActive].messages.push({
+                date: moment().format('DD/MM/YYYY HH:mm:ss'),
+                text: this.newMessage,
+                status: 'sent'
+            });
+            this.newMessage = ''
 
+            setTimeout(()=>{
+                this.contacts[this.contactActive].messages.push({
+                    date: moment().format('DD/MM/YYYY HH:mm:ss'),
+                    text: '😎 👍🏻',
+                    status: 'received'
+                });
+            }, 1000)
+        },
+        
     },
 
 })

@@ -119,7 +119,7 @@
                     <div class="new_message d-flex align-items-center">
                         <i class="far fa-smile"></i>
                         <div class="input-group input-group-lg">
-                            <input v-model="newMessage.text" @keyup.Enter="sendNewMessage" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Scrivi un messaggio">
+                            <input v-model="newMessage" @keyup.Enter="sendNewMessage" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Scrivi un messaggio">
                           </div>
                           <i class="fas fa-microphone"></i>
                     </div>
@@ -129,11 +129,13 @@
 
             </div>
 
-
         </div>
 
     </div>
 
+
+    <!-- Moment.js -->
+    <script src="./assets/js/moment.js"></script>
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <!-- main.js -->
