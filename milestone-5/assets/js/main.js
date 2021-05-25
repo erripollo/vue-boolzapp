@@ -13,7 +13,7 @@ const app = new Vue ({
 
         showMenu: false,
 
-        messageActive: 0,
+        messageActive: -1,
 
         contacts: [
             {
@@ -136,6 +136,14 @@ const app = new Vue ({
             })
             
         },
+
+        selectMessagetActive(index){
+            this.messageActive = index
+        },
+
+        showMessageMenu(){
+            
+        }
        
     },
 

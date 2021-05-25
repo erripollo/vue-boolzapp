@@ -103,9 +103,9 @@
 
                     <!-- chat contact active -->
                     <div class="chat_contact pt-5 px-5">
-                        <div class="row_message d-flex flex-column" :class="message.status==='sent' ? 'sent_message' : 'received_message'" v-for="message in contacts[contactActive].messages">
-                            <div class="box_message d-flex flex-column mb-3 mx-3 position-relative" >
-                                <i class="fas fa-angle-down text-right mr-2 mt-1 mb-1" @click="showMenu ^= true"></i>
+                        <div class="row_message d-flex flex-column" :class="message.status==='sent' ? 'sent_message' : 'received_message'" v-for="(message, index) in contacts[contactActive].messages" >
+                            <div class="box_message d-flex flex-column mb-3 mx-3 position-relative"  >
+                                <i class="fas fa-angle-down text-right mr-2 mt-1 mb-1" @click="selectMessagetActive(index)"></i>
                                 <span class="text_message px-3">
                                     {{message.text}}
                                 </span>
@@ -114,7 +114,7 @@
                                 </span>
 
                                 <!-- message menu -->
-                                <div class="message_menu shadow" v-show="showMenu">
+                                <div class="message_menu shadow" v-if="messageActive === index">
     
                                 </div>
                             </div>
