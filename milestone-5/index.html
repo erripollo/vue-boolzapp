@@ -113,9 +113,16 @@
                                     {{message.date}}
                                 </span>
 
-                                <!-- message menu -->
-                                <div class="message_menu shadow" v-if="messageActive === index">
-    
+                                <!-- message dropdown menu -->
+                                <div class="message_menu shadow p-3" v-if="messageActive === index">
+                                    <div class="mb-2 border-bottom pb-2 d-flex justify-content-between align-items-center">
+                                        <span>Message info</span>
+                                        <i class="fas fa-info-circle"></i>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center" @click="deleteMessage(index)">
+                                        <span>Delete message</span>
+                                        <i class="far fa-trash-alt text-danger"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>

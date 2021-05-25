@@ -150,13 +150,15 @@ aside {
 
 .message_menu {
   width: 200px;
-  height: 150px;
   background-color: white;
   position: absolute;
   top: 20px;
   right: 5px;
   border-radius: 5px;
   z-index: 1;
+}
+.message_menu div:hover {
+  cursor: pointer;
 }
 
 /* type and send new message */

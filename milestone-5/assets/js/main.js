@@ -143,6 +143,11 @@ const app = new Vue ({
                 this.messageActive = index
             }
         },
+
+        deleteMessage(index){
+            this.contacts[this.contactActive].messages.splice(index, 1)
+            this.messageActive = -1
+        }
        
     },
 
