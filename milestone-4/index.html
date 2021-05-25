@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    
+
+    <div id="app">
+        <div class="wrapper w-100 vh-100">
+            <div class="container bg-secondary w-100 h-100 px-0 d-flex">
+
+                <!-- side section -->
+                <aside>
+                    <!-- user section -->
+                    <div class="user w-100 d-flex align-items-center justify-content-between">
+                        <!-- profile img and user name -->
+                        <div class="user_profile">
+                            <img width="60px" class="rounded-circle mx-3" src="./assets/img/avatar_io.jpg" alt="">
+                            <span class="font-weight-bold">Nome Utente</span>
+                        </div>
+
+                        <!-- icons user section -->
+                        <div class="user_icons">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- notification setup -->
+                    <div class="notification w-100 d-flex align-items-center">
+                        <div class="bell d-flex align-items-center justify-content-center mx-4">
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span>Ricevi notifiche di nuovi messaggi</span>
+                            <a href="#">Attiva le notifiche desktop</a>
+                        </div>
+
+                    </div>
+
+                    <!-- search section -->
+                    <div class="search w-100 d-flex align-items-center px-2">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">
+                                <i class="fas fa-search"></i>
+                              </span>
+                            </div>
+                            <input v-model="search" type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                    </div>
+
+                    <!-- contacts chat list -->
+                    <div class="contacts_chat w-100 bg-white">
+                        <div class="contact w-100 d-flex align-items-center pl-4" :class="index === contactActive ? 'active' : 'no_active' " v-for="(contact, index) in contacts" @click="selectContactActive(index)">
+                            <img class="rounded-circle" width="70px" :src="profileImg + contact.avatar + '.jpg'" alt="">
+                            <div class="h-100 p-3 d-flex flex-wrap justify-content-between">
+                                <span>{{contact.name}}</span>
+                                <span class="last_access ml-5" v-for="(message, index) in contact.messages" v-if="index === contact.messages.length-1">{{message.date}}</span>
+                                <span class="last_message" v-for="(message, index) in contact.messages" v-if="index === contact.messages.length-1">{{message.text}}</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </aside>
+                <!-- /side section -->
+
+                <!-- chat active -->
+                <div class="chat">
+                    <!-- contact active -->
+                    <div class="active_contact d-flex align-items-center justify-content-between">
+                        <div class="h-100 d-flex align-items-center pl-3">
+                            <img class="rounded-circle" width="60px" :src="profileImg + contacts[contactActive].avatar + '.jpg'" alt="">
+                            <div class="h-100 p-3 d-flex flex-column">
+                                <span>{{contacts[contactActive].name}}</span>
+                                <span class="last_access" v-for="(message, index) in contacts[contactActive].messages" v-if="index === contacts[contactActive].messages.length-1">Ultimo accesso {{message.date}}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="icons_active_contact">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- chat contact active -->
+                    <div class="chat_contact pt-5 px-5">
+                        <div class="row_message d-flex flex-column" :class="message.status==='sent' ? 'sent_message' : 'received_message'" v-for="message in contacts[contactActive].messages">
+                            <div class="box_message d-flex flex-column mb-3 mx-3">
+                                <span class="text_message pt-3 px-3">
+                                    {{message.text}}
+                                </span>
+                                <span class="date_message">
+                                    {{message.date}}
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- type and send new mesage -->
+                    <div class="new_message d-flex align-items-center">
+                        <i class="far fa-smile"></i>
+                        <div class="input-group input-group-lg">
+                            <input v-model="newMessage" @keyup.Enter="sendNewMessage" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Scrivi un messaggio">
+                          </div>
+                          <i class="fas fa-microphone"></i>
+                    </div>
+    
+                </div>
+                <!-- /active chat -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Day.js -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- main.js -->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
