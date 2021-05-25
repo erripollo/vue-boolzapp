@@ -11,8 +11,6 @@ const app = new Vue ({
 
         search: '',
 
-        showMenu: false,
-
         messageActive: -1,
 
         contacts: [
@@ -106,7 +104,8 @@ const app = new Vue ({
     methods: {
         
         selectContactActive(index){
-            return this.contactActive = index
+            this.contactActive = index
+            this.messageActive = -1
         },
 
         sendNewMessage(){
@@ -138,12 +137,12 @@ const app = new Vue ({
         },
 
         selectMessagetActive(index){
-            this.messageActive = index
+            if(index == this.messageActive){
+                this.messageActive = -1
+            } else{
+                this.messageActive = index
+            }
         },
-
-        showMessageMenu(){
-            
-        }
        
     },
 
