@@ -7,7 +7,7 @@
 * side menu section 
 *****************************/
 aside {
-  max-width: 400px;
+  width: 400px;
   height: 100%;
   background-color: white;
 }

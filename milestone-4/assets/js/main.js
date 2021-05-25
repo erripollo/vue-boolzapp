@@ -11,8 +11,6 @@ const app = new Vue ({
 
         search: '',
 
-        filteredContacts: [],
-
         contacts: [
             {
                 name: 'Michele',
@@ -125,11 +123,14 @@ const app = new Vue ({
         },
 
         searchContacts(){
-            this.filteredContacts = this.contacts.filter((contact) =>{
+            this.contacts.forEach((contact) => {
                 if (contact.name.toLowerCase().includes(this.search.toLowerCase())){
-                    return contact
+                    contact.visible = true
+                }else {
+                    contact.visible = false
                 }
             })
+            
         }
        
     },
