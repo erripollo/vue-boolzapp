@@ -103,11 +103,24 @@ const app = new Vue ({
 
     methods: {
         
+        /** 
+         * ## Contact active
+         * 
+         * selects the index of the cliked contact and reset message active
+         * 
+         * @param {number} index 
+         */
         selectContactActive(index){
             this.contactActive = index
             this.messageActive = -1
         },
 
+        /** 
+         * ## Send new message
+         * 
+         * add new send message from a input text in contacts.messages, 
+         * and after 1s add new default receive message in contacts.messages  
+         */
         sendNewMessage(){
             this.contacts[this.contactActive].messages.push({
                 date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
@@ -125,6 +138,12 @@ const app = new Vue ({
             }, 1000)
         },
 
+        /**
+         * ## Search contacts
+         * 
+         * filters the contacts in the list, 
+         * and show only the contacts that name contains the text typed in the input text
+         */
         searchContacts(){
             this.contacts.forEach((contact) => {
                 if (contact.name.toLowerCase().includes(this.search.toLowerCase())){
@@ -136,6 +155,14 @@ const app = new Vue ({
             
         },
 
+        /**
+         * ## Select message active
+         * 
+         * selects the index of the cliked message, 
+         * resets index=-1 when the message is clicked again
+         * 
+         * @param {number} index 
+         */
         selectMessagetActive(index){
             if(index == this.messageActive){
                 this.messageActive = -1
@@ -144,6 +171,13 @@ const app = new Vue ({
             }
         },
 
+        /**
+         * ## Delete message
+         * 
+         * Deletes a select message
+         * 
+         * @param {number} index 
+         */
         deleteMessage(index){
             this.contacts[this.contactActive].messages.splice(index, 1)
             this.messageActive = -1
